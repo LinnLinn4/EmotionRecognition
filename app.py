@@ -3,7 +3,7 @@ import cv2
 import streamlit as st
 from tensorflow import keras
 from keras.preprocessing.image import img_to_array
-from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode
+from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode, ClientSettings
 from tensorflow.keras.models import load_model
 
 emotion_dict = {0:'angry', 1 :'happy', 2: 'neutral', 3:'sad', 4: 'surprise'}
@@ -43,6 +43,7 @@ def main():
                  2. Real time face emotion recognization.
                  """)
     elif choice == "Webcam Face Detection":
+	
         class VideoTransformer(VideoTransformerBase):
             def transform(self, frame):
                 global b
@@ -119,14 +120,17 @@ def main():
                     st.write('Unable to access camera input')
 
 
-        #HERE = Path(__file__).parent
+        HERE = Path(__file__).parent
 
-        #logger = logging.getLogger(__name__)
+        logger = logging.getLogger(__name__)
             # class VideoTransformer(object):
         #   pass
         #live_detect()
-        webrtc_streamer(key="example", mode=WebRtcMode.SENDRECV, rtc_configuration=RTC_CONFIGURATION, video_processor_factory=Faceemotion)
-        # live_detect()
+	WEBRTC_CLIENT_SETTINGS = ClientSettings(
+            rtc_configuration={"iceServers": [{"urls": ["stun:stun.l.google.com:19302"]}]},
+            media_stream_constraints={"video": True, "audio": True})
+        webrtc_streamer(key="example", video_transformer_factory=VideoTransformer, mode=WebRtcMode.SENDRECV, client_settings=WEBRTC_CLIENT_SETTINGS, async_transform=True)
+	# live_detect()
         st.write('Live functioning')
         st.write(
             'This is running using newly introduced webrtc tool which can access the camera whereas opencv cannot function properly in streamlit')
