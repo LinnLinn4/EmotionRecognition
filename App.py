@@ -14,23 +14,6 @@ from pathlib import Path
 
 main_options = st.sidebar.selectbox("What would you like to choose: ", ['About', 'Detection space', 'Contact'])
 st.title('Facial Emotion Detector')
-cloud_model_location = "1PmsUezmJGwTQP51yTMsjLGe2okdo-yxr"
-@st.cache
-def load_model():
-
-    save_dest = Path('/content/gdrive/MyDrive')
-    save_dest.mkdir(exist_ok=True)
-    
-    f_checkpoint = Path("/content/gdrive/MyDrive/cnn.h5")
-
-    if not f_checkpoint.exists():
-        with st.spinner("Downloading model... this may take awhile! \n Don't stop it!"):
-            from GD_download import download_file_from_google_drive
-            download_file_from_google_drive(cloud_model_location, f_checkpoint)
-    
-    model = torch.load(f_checkpoint, map_location=device)
-    model.eval()
-    return model
 
 if main_options == 'About':
   st.header('Problem Statement')
@@ -38,8 +21,8 @@ if main_options == 'About':
    However, they play an essential role in our lives, and most existing software interfaces are non-verbal. Adding emotional expression recognition to expect the users’ feelings and emotional state can effectively improve human-computer interaction.')
   st.write('''Humans usually employ various cues to express their emotions, such as facial expressions, hand gestures and voice. \
   Facial expressions represent up to 55% of human communications while other ways such as oral language allocate a mere 7% of emotion expression.\
-  Therefore, considering facial expressions in an HRI(Human robotic interactions system) successfully enables simulation of natural interactions.\ 
-  It has many more advantages than we can imagine. It can be used in education, research, medicine, manufacturing, investigation and many other fields.\
+  Therefore, considering facial expressions in an HRI(Human robotic interactions system) successfully enables simulation of natural interactions. 
+  It has many more advantages than we can imagine. It can be used in education, research, medicine, manufacturing, investigation and many other fields.
   If the people use this in the right way, it can give us many good results.''')
   st.write('''Note: This app was created to use in the education field to detect the emotions of the students. \
   It will enable proper understanding and improvement in teaching the students if we use it with a camera that keeps an eye on students' emotions.''')
