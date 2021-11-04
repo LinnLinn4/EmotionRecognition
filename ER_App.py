@@ -10,7 +10,8 @@ import streamlit as st
 import time
 from skimage import color
 from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfiguration, VideoProcessorBase, WebRtcMode
-
+from google.colab import drive
+drive.mount('/content/gdrive')
 st.title("Welcome to Face Emotion Recognition Application")
 
 main_options = st.sidebar.selectbox("What would you like to choose: ", ['About', 'Detection space', 'Contact'])
