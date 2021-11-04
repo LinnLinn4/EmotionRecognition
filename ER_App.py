@@ -28,7 +28,7 @@ if main_options == 'About':
   It will enable proper understanding and improvement in teaching the students if we use it with a camera that keeps an eye on students emotions.')
 
 elif main_options == 'Contact':
-  st.write('Contact Us')
+  st.header('Contact Us')
   st.write('sannhtet899@gmail.com')
   st.write('khinezinzinlinn@gmail.com')
   st.write('sthgeckoygn@gmail.com')
