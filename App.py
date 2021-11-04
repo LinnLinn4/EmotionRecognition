@@ -13,7 +13,7 @@ from streamlit_webrtc import webrtc_streamer, VideoTransformerBase, RTCConfigura
 from pathlib import Path
 
 main_options = st.sidebar.selectbox("What would you like to choose: ", ['About', 'Detection space', 'Contact'])
-
+st.title('Facial Emotion Detector')
 cloud_model_location = "1PmsUezmJGwTQP51yTMsjLGe2okdo-yxr"
 @st.cache
 def load_model():
