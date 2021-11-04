@@ -33,7 +33,7 @@ def load_model():
     return model
 
 if main_options == 'About':
-  st.write('Solution to the real time face emotion detection problem')
+  st.header('Problem Statement')
   st.write('Today, the majority of our time is spent interacting with computers and mobile phones in our daily life due to technology progression and ubiquitously spreading of these mediums.\
    However, they play an essential role in our lives, and most existing software interfaces are non-verbal. Adding emotional expression recognition to expect the users’ feelings and emotional state can effectively improve human-computer interaction.')
   st.write('''Humans usually employ various cues to express their emotions, such as facial expressions, hand gestures and voice. \
