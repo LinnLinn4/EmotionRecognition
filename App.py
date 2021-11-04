@@ -55,7 +55,7 @@ elif main_options == 'Detection space':
 
     if st.button("Progress"):
         
-      model = load_model('https://www.dropbox.com/s/m4stnwhu2lck1m9/cnn3.h5?dl=0')
+      model = load_model('cnn.h5')
       #gray = cv2.cvtColor(opencv_image,cv2.COLOR_BGR2GRAY)
       #t = pil2tensor(opencv_image,dtype=np.float32)
       #t = t.float()/255.0
@@ -107,7 +107,7 @@ elif main_options == 'Detection space':
 
     # load model
     emotion_dict = {0:'anger', 1 :'disgust', 2: 'fear', 3:'happy', 4: 'sad',5:'surprise',6:'neutral'}
-    classifier = load_model('https://www.dropbox.com/s/m4stnwhu2lck1m9/cnn3.h5?dl=0')
+    classifier = load_model('cnn.h5')
 
     #load face
     try:
