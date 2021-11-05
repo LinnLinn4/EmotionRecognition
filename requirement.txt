@@ -2,4 +2,5 @@ opencv
 streamlit
 tensorflow
 maplotlib
-streamlit_webtrc
+streamlit_webrtc
+skimage
